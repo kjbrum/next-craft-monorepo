@@ -250,6 +250,11 @@
 @endtask
 
 @task('deployment:cleanup', ['on' => 'remote'])
+	cd {{ $release }}
+
+	# Remove non-craft directories
+	ls | grep -v {{ $craft_dir }} | xargs rm -rf
+
 	cd {{ $release_craft_dir }}
 
     php craft migrate/all
@@ -269,7 +274,7 @@
 	cd {{ $releases_dir }}
 
 	ROLLBACK_RELEASE=$(find . -maxdepth 1 -name "20*" | sort | tail -n 2 | head -n1 | sed 's/[^0-9]*//g')
-	ln -nfs "{{ $releases_dir }}/$ROLLBACK_RELEASE" "{{ $current_dir }}"
+	ln -nfs "{{ $releases_dir }}/$ROLLBACK_RELEASE/{$craft_dir}" "{{ $current_dir }}"
 	echo "✅ Rolled back to $ROLLBACK_RELEASE"
 
 	find . -maxdepth 1 -name "20*" | sort | tail -n 1 | xargs rm -Rf

@@ -1,0 +1,37 @@
+dateModified: 1608436230
+email:
+  fromEmail: noreply@example.com
+  fromName: 'Simple Focus Next Craft Mono'
+  replyToEmail: noreply@example.com
+  template: ''
+  transportSettings:
+    apiKey: $MAILGUN_API_KEY
+    domain: $MAILGUN_DOMAIN
+    endpoint: ''
+  transportType: craft\mailgun\MailgunAdapter
+plugins:
+  mailgun:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  seomatic:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.9
+system:
+  edition: pro
+  live: true
+  name: 'Simple Focus Next Craft Mono'
+  retryDuration: null
+  schemaVersion: 3.5.13
+  timeZone: America/Chicago
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

@@ -1,0 +1,67 @@
+fieldLayouts:
+  a78b7d97-5b28-4fa9-b57f-bb086b32441b:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: abc58a83-2d54-4fc5-a03b-0b6863ee8ee2
+            instructions: ''
+            label: ''
+            required: '1'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: General
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: e5f6f17e-ebd2-4438-8172-8b06e3a5eb3b
+            instructions: ''
+            label: Label
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 0443ae4a-bff2-4aa7-b7a1-ddeb278c6d2b
+            instructions: ''
+            label: Heading
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: aaeac075-785d-40a3-95d1-9f1f245e2078
+            instructions: ''
+            label: 'Button Text'
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: dfd9f29c-0a7d-4c21-92ca-3e5617751b2d
+            instructions: ''
+            label: 'Button URL'
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 121ecd73-f0e9-40e9-8bd7-6e8ace5244c4
+            instructions: ''
+            label: Image
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Callout
+        sortOrder: 2
+handle: footer
+name: Footer

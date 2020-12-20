@@ -1,0 +1,11 @@
+isPublic: false
+name: Next.js
+scope:
+  - 'sections.7a413e68-3bb6-4eb4-b426-441eecd788ac:read'
+  - 'entrytypes.fe3b95fe-2697-4bcc-935c-12f09ec21157:read'
+  - 'sections.d52a5033-2c33-4374-9483-575583c50440:read'
+  - 'entrytypes.94483792-7683-4fe6-8ad1-8ea0f01ec3bf:read'
+  - 'sections.33bad9da-8deb-437a-813e-e08b6b6a1fa9:read'
+  - 'entrytypes.45471aa5-2123-4e6f-a0f6-9a42be3e3180:read'
+  - 'volumes.8b917d93-99f0-46b1-a340-1577fafdf46d:read'
+  - 'globalsets.1be70d43-f818-4034-8274-f781936e3a1d:read'

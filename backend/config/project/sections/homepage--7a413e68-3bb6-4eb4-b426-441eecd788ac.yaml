@@ -1,0 +1,23 @@
+enableVersioning: true
+handle: homepage
+name: Homepage
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - Production
+      -
+        - urlFormat
+        - '@previewProduction'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  2db749af-5480-4975-830e-eff6615b8e4c:
+    enabledByDefault: true
+    hasUrls: true
+    template: null
+    uriFormat: __home__
+type: single

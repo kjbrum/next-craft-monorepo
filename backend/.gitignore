@@ -1,0 +1,17 @@
+# General
+.env
+.idea
+vendor
+.DS_Store
+.composer
+
+# Logs/Errors
+*.log
+*.sql
+*.sql.gz
+
+# Web folders
+!web/.htaccess
+web/cache
+web/uploads
+web/dist/*

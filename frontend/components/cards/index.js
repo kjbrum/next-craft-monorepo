@@ -1,0 +1,1 @@
+export { CardPost } from './CardPost'

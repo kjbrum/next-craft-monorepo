@@ -1,0 +1,20 @@
+{
+    "buttons": [
+        "undo",
+        "redo",
+        "html",
+        "formatting",
+        "bold",
+        "italic",
+        "lists",
+        "link",
+        "file",
+        "image"
+    ],
+    "plugins": [
+        "fullscreen",
+        "video",
+        "widget"
+    ],
+    "toolbarFixed": true
+}

@@ -4,7 +4,7 @@ import { fetchAPI, getGlobalFields } from '@/lib/api'
 import { SEOMATIC_FRAGMENT } from '@/lib/fragments'
 import { Flex, Button } from '@/components/core'
 import { Container } from '@/components/general'
-import { SectionHero, SectionPostsList } from '@/components/sections'
+import { SectionHero } from '@/components/sections'
 
 export const HOME_QUERY = gql`
     ${SEOMATIC_FRAGMENT}
@@ -74,7 +74,18 @@ const Home = ({ page, posts, hasMore }) => {
             />
 
             <Container className="py-16 md:py-24">
-                {allPosts && <SectionPostsList posts={allPosts} />}
+                {allPosts && (
+                    <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                        {allPosts.map(post => (
+                            <CardPost
+                                key={post.id}
+                                url={`/posts/${post.slug}`}
+                                title={post.title}
+                                image={post.featuredImage[0]}
+                            />
+                        ))}
+                    </Grid>
+                )}
 
                 {hasMorePosts && (
                     <Flex className="justify-center pt-8 md:pt-16">

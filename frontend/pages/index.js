@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { gql } from 'graphql-request'
 import { fetchAPI, getGlobalFields } from '@/lib/api'
 import { SEOMATIC_FRAGMENT } from '@/lib/fragments'
-import { Flex, Button } from '@/components/core'
+import { Flex, Grid, Button } from '@/components/core'
 import { Container } from '@/components/general'
 import { SectionHero } from '@/components/sections'
 

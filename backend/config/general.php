@@ -44,7 +44,7 @@ return [
     'dev' => [
         'devMode' => true,
         'allowUpdates' => true,
-        // 'allowAdminChanges' => true,
+        'allowAdminChanges' => true,
         'disabledPlugins' => [
             // 'blitz',
         ],

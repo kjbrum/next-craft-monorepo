@@ -4,6 +4,7 @@ import { fetchAPI, getGlobalFields } from '@/lib/api'
 import { SEOMATIC_FRAGMENT } from '@/lib/fragments'
 import { Flex, Grid, Button } from '@/components/core'
 import { Container } from '@/components/general'
+import { CardPost } from '@/components/cards'
 import { SectionHero } from '@/components/sections'
 
 export const HOME_QUERY = gql`

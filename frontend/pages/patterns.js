@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import classNames from 'classnames'
+import { getMainNavigation } from '@/lib/api'
 
 import { Container, Layout } from '@/components/general'
 import {
@@ -234,7 +235,7 @@ const Patterns = ({ navigation }) => {
                     <Button>Normal</Button>
                 </Box>
                 <Box className="mt-2">
-                    <Button variant="primary">Primary Variant</Button>
+                    <Button variant="filled">Primary Variant</Button>
                 </Box>
                 <Box className="mt-2">
                     <Button variant="outline">Outline Variant</Button>
@@ -347,6 +348,17 @@ const Patterns = ({ navigation }) => {
             </Container>
         </Layout>
     )
+}
+
+export async function getStaticProps() {
+    const { navigation } = await getMainNavigation()
+
+    return {
+        props: {
+            navigation,
+        },
+        revalidate: 1,
+    }
 }
 
 export default Patterns

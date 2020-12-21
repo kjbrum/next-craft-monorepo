@@ -104,6 +104,7 @@ export const Checkbox = forwardRef(
                             'text-gray-700 rounded focus:ring-offset-0',
                             className
                         )}
+                        {...props}
                     />
                     <Box as="span" className="pl-2">
                         {label}
@@ -168,6 +169,7 @@ export const Switch = forwardRef(
                             checked ? 'text-gray-700' : 'text-gray-300',
                             getMargin(className)
                         )}
+                        {...props}
                     >
                         <Box
                             aria-hidden={true}
@@ -201,6 +203,7 @@ export const Switch = forwardRef(
                         checked ? 'text-gray-700' : 'text-gray-500',
                         getMargin(className)
                     )}
+                    {...props}
                 >
                     <Box
                         aria-hidden={true}

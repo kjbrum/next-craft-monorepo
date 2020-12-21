@@ -3,6 +3,8 @@ name: Next.js
 scope:
   - 'sections.7a413e68-3bb6-4eb4-b426-441eecd788ac:read'
   - 'entrytypes.fe3b95fe-2697-4bcc-935c-12f09ec21157:read'
+  - 'sections.b86d2cff-c155-45dc-95d7-29d493538b4e:read'
+  - 'entrytypes.c870b668-8476-4704-a491-da0ce758d275:read'
   - 'sections.d52a5033-2c33-4374-9483-575583c50440:read'
   - 'entrytypes.94483792-7683-4fe6-8ad1-8ea0f01ec3bf:read'
   - 'sections.33bad9da-8deb-437a-813e-e08b6b6a1fa9:read'

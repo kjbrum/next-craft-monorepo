@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: 937cfef0-29e9-4cab-abb4-94f3a731445f
+handle: navLink
+instructions: ''
+name: Link
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_navlink}}'
+  maxBlocks: '1'
+  minBlocks: '1'
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

@@ -1,0 +1,57 @@
+field: 7be55093-4535-4cad-8654-93429b64ba35
+fieldLayouts:
+  207d011f-c969-484d-973d-5cc93c53c09f:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 382fa50e-1db9-4c50-82d1-c0732bff5f4c
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: da94bbbb-e63e-4c92-83c0-9da79f65060c
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  382fa50e-1db9-4c50-82d1-c0732bff5f4c:
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: externalLink
+    instructions: ''
+    name: Link
+    searchable: false
+    settings:
+      maxLength: '255'
+      placeholder: 'https://example.com'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  da94bbbb-e63e-4c92-83c0-9da79f65060c:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: openInNewWindow
+    instructions: ''
+    name: 'Open in new window'
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+handle: externalLink
+name: External
+sortOrder: 2

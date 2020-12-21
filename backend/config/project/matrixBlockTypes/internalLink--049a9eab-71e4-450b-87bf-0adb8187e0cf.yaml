@@ -1,0 +1,68 @@
+field: 7be55093-4535-4cad-8654-93429b64ba35
+fieldLayouts:
+  58076b80-4151-44b1-8dbf-a80100c9abc3:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 7d108418-949a-4509-a1fe-6f7a033eb3dd
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: e416459d-e440-4fa9-9023-d2ba864df2a5
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  7d108418-949a-4509-a1fe-6f7a033eb3dd:
+    contentColumnType: string
+    fieldGroup: null
+    handle: internalLink
+    instructions: ''
+    name: Link
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      limit: '1'
+      localizeRelations: false
+      selectionLabel: 'Select an entry'
+      showSiteMenu: true
+      source: null
+      sources:
+        - 'section:d52a5033-2c33-4374-9483-575583c50440'
+        - 'section:33bad9da-8deb-437a-813e-e08b6b6a1fa9'
+        - singles
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  e416459d-e440-4fa9-9023-d2ba864df2a5:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: openInNewWindow
+    instructions: ''
+    name: 'Open in new window'
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+handle: internalLink
+name: Internal
+sortOrder: 1

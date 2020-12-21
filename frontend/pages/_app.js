@@ -1,21 +1,17 @@
-import { getMainNavigation } from '@/lib/api'
 import '@/styles/global.css'
 
-const App = ({ Component, navigation, pageProps }) => {
-    return <Component {...pageProps} navigation={navigation} />
+const App = ({ Component, pageProps }) => {
+    return <Component {...pageProps} />
 }
 
-App.getInitialProps = async ({ Component, ctx }) => {
-    const { navigation } = await getMainNavigation()
+// App.getInitialProps = async ({ Component, ctx }) => {
+//     const pageProps = Component.getInitialProps
+//         ? Component.getInitialProps(ctx)
+//         : {}
 
-    const pageProps = Component.getInitialProps
-        ? Component.getInitialProps(ctx)
-        : {}
-
-    return {
-        navigation,
-        pageProps,
-    }
-}
+//     return {
+//         pageProps,
+//     }
+// }
 
 export default App

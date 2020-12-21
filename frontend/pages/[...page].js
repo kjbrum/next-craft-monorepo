@@ -1,5 +1,5 @@
 import Error from 'next/error'
-import { getPageByUri, getPageUris } from '@/lib/api'
+import { getMainNavigation, getPageByUri, getPageUris } from '@/lib/api'
 import { Layout } from '@/components/general'
 import { SectionHero } from '@/components/sections'
 
@@ -24,6 +24,7 @@ Page.defaultProps = {
 
 export async function getStaticProps({ params, preview = false, previewData }) {
     const uri = params.page.join('/')
+    const { navigation } = await getMainNavigation()
 
     try {
         const { page } = await getPageByUri(uri, previewData)
@@ -31,8 +32,10 @@ export async function getStaticProps({ params, preview = false, previewData }) {
         return {
             props: {
                 key: page.id,
-                preview,
                 page,
+                navigation,
+                seo: page.seomatic,
+                preview,
             },
             revalidate: 1,
         }
@@ -40,6 +43,7 @@ export async function getStaticProps({ params, preview = false, previewData }) {
         return {
             props: {
                 error: true,
+                navigation,
                 preview,
             },
         }

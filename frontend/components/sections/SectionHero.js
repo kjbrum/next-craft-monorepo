@@ -10,7 +10,7 @@ export const SectionHero = ({ title, actionLink, actionText, image }) => (
                     as={Container}
                     className="justify-center items-center lg:min-h-96"
                 >
-                    <Box className="sm:text-center lg:text-left">
+                    <Box className="w-full sm:text-center lg:text-left">
                         {actionLink && actionText && (
                             <Link
                                 href={actionLink}

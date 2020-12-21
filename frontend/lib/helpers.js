@@ -52,7 +52,7 @@ export const parseRedactor = (content, options = {}) => {
             if (name === 'img') {
                 return (
                     <Box
-                        sx={{
+                        css={{
                             'div, img': {
                                 position: 'static !important',
                                 width: 'auto !important',
@@ -64,6 +64,7 @@ export const parseRedactor = (content, options = {}) => {
                         <Image
                             {...props}
                             layout="responsive"
+                            sizes="(min-width: 1440px) 1440px, 100vw"
                             width={1440}
                             {...options?.img}
                         />

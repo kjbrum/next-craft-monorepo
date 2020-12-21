@@ -30,14 +30,23 @@ export async function getMainNavigation() {
         gql`
             {
                 navigation: entries(section: "mainNavigation") {
+                    id
                     title
                     ... on mainNavigation_mainNavigation_Entry {
-                        linkType
-                        internalLink {
-                            uri
+                        navLink {
+                            ... on navLink_internalLink_BlockType {
+                                typeHandle
+                                internalLink {
+                                    uri
+                                }
+                                openInNewWindow
+                            }
+                            ... on navLink_externalLink_BlockType {
+                                typeHandle
+                                externalLink
+                                openInNewWindow
+                            }
                         }
-                        externalLink
-                        openInNewWindow
                     }
                 }
             }

@@ -1,5 +1,5 @@
 import Error from 'next/error'
-import { getPostBySlug, getPostSlugs } from '@/lib/api'
+import { getMainNavigation, getPostBySlug, getPostSlugs } from '@/lib/api'
 import { Layout, Container, Prose } from '@/components/general'
 import { SectionHero } from '@/components/sections'
 
@@ -23,6 +23,7 @@ const Post = ({ post, error, navigation, preview }) => {
                         className="prose-lg max-w-screen-md mx-auto py-8 lg:py-16"
                         parseOptions={{
                             img: {
+                                sizes: '(min-width: 768px) 768px, 100vw',
                                 width: 768,
                             },
                         }}
@@ -42,6 +43,7 @@ Post.defaultProps = {
 
 export async function getStaticProps({ params, preview = false, previewData }) {
     const { slug } = params
+    const { navigation } = await getMainNavigation()
 
     try {
         const { post } = await getPostBySlug(slug, previewData)
@@ -49,8 +51,10 @@ export async function getStaticProps({ params, preview = false, previewData }) {
         return {
             props: {
                 key: post.id,
-                preview,
                 post,
+                navigation,
+                seo: post.seomatic,
+                preview,
             },
             revalidate: 1,
         }
@@ -58,6 +62,7 @@ export async function getStaticProps({ params, preview = false, previewData }) {
         return {
             props: {
                 error: true,
+                navigation,
                 preview,
             },
         }

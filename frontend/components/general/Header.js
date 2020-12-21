@@ -11,31 +11,22 @@ export const Header = ({ navigation }) => (
             </Box>
 
             <Box as="nav">
-                <Flex as="ul">
-                    {navigation.map((navItem, idx) => (
-                        <Box key={idx} as="li" className="mr-auto pr-4">
+                <Flex as="ul" className="space-x-4">
+                    {navigation.map(({ id, title, navLink: [navLink] }) => (
+                        <Box key={id} as="li">
                             <Link
                                 href={
-                                    navItem.linkType === 'internal'
-                                        ? `/${navItem.internalLink[0].uri}`
-                                        : navItem.externalLink
+                                    navLink.typeHandle === 'internalLink'
+                                        ? `/${navLink.internalLink[0].uri}`
+                                        : navLink.externalLink
                                 }
-                                target={navItem.openInNewWindow ? '_blank' : ''}
-                                className="text-white hover:text-gray-200 transition"
+                                target={navLink.openInNewWindow ? '_blank' : ''}
+                                className="text-white hover:underline focus:underline"
                             >
-                                {navItem.title}
+                                {title}
                             </Link>
                         </Box>
                     ))}
-
-                    <Box as="li">
-                        <Link
-                            href="/patterns"
-                            className="text-white hover:text-gray-200 transition"
-                        >
-                            Patterns
-                        </Link>
-                    </Box>
                 </Flex>
             </Box>
         </Flex>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { gql } from 'graphql-request'
-import { fetchAPI } from '@/lib/api'
+import { fetchAPI, getMainNavigation } from '@/lib/api'
 import { SEOMATIC_FRAGMENT } from '@/lib/fragments'
 import { Flex, Button } from '@/components/core'
 import { Layout, Container } from '@/components/general'
@@ -79,6 +79,7 @@ const Home = ({ page, posts, hasMore, navigation, preview }) => {
                 {hasMorePosts && (
                     <Flex className="justify-center pt-8 md:pt-16">
                         <Button
+                            variant="filled"
                             className={
                                 isFetching && 'opacity-25 pointer-event-none'
                             }
@@ -94,6 +95,7 @@ const Home = ({ page, posts, hasMore, navigation, preview }) => {
 }
 
 export async function getStaticProps({ preview = false, previewData }) {
+    const { navigation } = await getMainNavigation()
     const { page, posts, totalPosts } = await fetchAPI(HOME_QUERY, {
         previewData,
     })
@@ -103,6 +105,8 @@ export async function getStaticProps({ preview = false, previewData }) {
             page,
             posts,
             hasMore: process.env.POSTS_PER_PAGE < totalPosts,
+            navigation,
+            seo: page.seomatic,
             preview,
         },
         revalidate: 1,

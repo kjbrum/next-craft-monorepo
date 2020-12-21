@@ -100,7 +100,7 @@ export const Button = forwardRef((props, ref) => (
 ))
 
 export const Image = forwardRef(
-    ({ ratio = 4 / 3, width, height, ...props }, ref) => (
+    ({ ratio = 4 / 3, width, height, src, ...props }, ref) => (
         <Box
             ref={ref}
             as={NextImage}
@@ -108,6 +108,11 @@ export const Image = forwardRef(
             alt=""
             width={width}
             height={height || (width && width / ratio)}
+            src={
+                src.includes('/uploads')
+                    ? `${process.env.NEXT_PUBLIC_CRAFT_DOMAIN}${src}`
+                    : src
+            }
             {...props}
         />
     )

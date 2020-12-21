@@ -60,6 +60,5 @@ return [
     // Production environment settings
     'production' => [
         'enableGraphQlCaching' => true,    // Enable GraphQL caching
-        'disallowRobots' => false,    // Prevent crawlers from indexing pages and following links
     ],
 ];

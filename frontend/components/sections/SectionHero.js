@@ -23,7 +23,7 @@ export const SectionHero = ({ title, actionLink, actionText, image }) => (
                         {title && (
                             <Heading
                                 as="h1"
-                                variant="display1"
+                                variant="display"
                                 className="tracking-tight leading-snug sm:leading-none font-extrabold text-gray-900"
                             >
                                 {title}

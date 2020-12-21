@@ -4,7 +4,7 @@ import { parseUploadUrls } from '@/lib/helpers'
 import { Flex } from '@/components/core'
 import { Alert, Footer, Header, ScreenReader } from '@/components/general'
 
-export const Layout = ({ seo, navigation, preview, children }) => (
+export const Layout = ({ mainNavigation, footer, seo, preview, children }) => (
     <>
         {seo && (
             <Head>
@@ -29,7 +29,7 @@ export const Layout = ({ seo, navigation, preview, children }) => (
                 </Alert>
             )}
 
-            <Header navigation={navigation} />
+            <Header navigation={mainNavigation} />
 
             <Flex
                 as="main"
@@ -40,7 +40,7 @@ export const Layout = ({ seo, navigation, preview, children }) => (
                 {children}
             </Flex>
 
-            <Footer />
+            <Footer copyright={footer?.copyright} />
         </Flex>
 
         {seo && (
@@ -55,6 +55,9 @@ export const Layout = ({ seo, navigation, preview, children }) => (
 )
 
 Layout.defaultProps = {
+    mainNavigation: null,
+    footer: null,
+    seo: null,
     preview: false,
 }
 

@@ -21,12 +21,17 @@ const breakpoints = {
 const fluidValue = (min, max) => polished.between(min, max, '20rem', '90rem')
 
 module.exports = {
-    purge: [
-        './pages/**/*.{js,jsx,ts,tsx}',
-        './components/**/*.{js,jsx,ts,tsx}',
-        './lib/**/*.{js,jsx,ts,tsx}',
-        './tailwind.variants.js',
-    ],
+    purge: {
+        content: [
+            './pages/**/*.{js,jsx,ts,tsx}',
+            './components/**/*.{js,jsx,ts,tsx}',
+            './lib/**/*.{js,jsx,ts,tsx}',
+            './tailwind.variants.js',
+        ],
+        options: {
+            safelist: [/^aspect-/],
+        },
+    },
     darkMode: false, // Options: false/media/class
     theme: {
         extend: {
@@ -78,15 +83,14 @@ module.exports = {
             '5xl': '3rem',
             '6xl': '4rem',
             intro: fluidValue('1rem', '1.25rem'),
-            // display1: [
+            // display: [
             //     fluidValue('1.5rem', '4rem'),
             //     {
             //         letterSpacing: 0,
             //         lineHeight: 1,
             //     },
             // ],
-            display1: fluidValue('1.875rem', '4rem'),
-            display2: fluidValue('1.5rem', '3rem'),
+            display: fluidValue('1.875rem', '4rem'),
             h1: fluidValue('1.25rem', '2.25rem'),
             h2: fluidValue('1.25rem', '1.875rem'),
             h3: fluidValue('1.25rem', '1.5rem'),

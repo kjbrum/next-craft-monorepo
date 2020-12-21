@@ -25,11 +25,11 @@ export async function fetchAPI(query, { variables = {}, previewData } = {}) {
     return res
 }
 
-export async function getMainNavigation() {
+export async function getGlobalFields(previewData) {
     const data = await fetchAPI(
         gql`
             {
-                navigation: entries(section: "mainNavigation") {
+                mainNavigation: entries(section: "mainNavigation") {
                     id
                     title
                     ... on mainNavigation_mainNavigation_Entry {
@@ -49,10 +49,17 @@ export async function getMainNavigation() {
                         }
                     }
                 }
+                footer: globalSet(handle: "footer") {
+                    ... on footer_GlobalSet {
+                        copyright
+                    }
+                }
             }
-        `
+        `,
+        {
+            previewData,
+        }
     )
-
     return data
 }
 

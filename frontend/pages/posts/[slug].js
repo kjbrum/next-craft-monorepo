@@ -1,49 +1,41 @@
-import Error from 'next/error'
-import { getMainNavigation, getPostBySlug, getPostSlugs } from '@/lib/api'
-import { Layout, Container, Prose } from '@/components/general'
+import { getGlobalFields, getPostBySlug, getPostSlugs } from '@/lib/api'
+import { Container, Prose } from '@/components/general'
 import { SectionHero } from '@/components/sections'
 
-const Post = ({ post, error, navigation, preview }) => {
-    // Error
-    if (error || Object.keys(post).length === 0)
-        return <Error statusCode={404} />
+const Post = ({ post }) => (
+    <>
+        <SectionHero
+            title={post.title}
+            actionLink="/"
+            actionText="&larr; Back to Home"
+            image={post.featuredImage[0]}
+        />
 
-    return (
-        <Layout seo={post.seomatic} navigation={navigation} preview={preview}>
-            <SectionHero
-                title={post.title}
-                actionLink="/"
-                actionText="&larr; Back to Home"
-                image={post.featuredImage[0]}
-            />
-
-            {post.body && (
-                <Container>
-                    <Prose
-                        className="prose-lg max-w-screen-md mx-auto py-8 lg:py-16"
-                        parseOptions={{
-                            img: {
-                                sizes: '(min-width: 768px) 768px, 100vw',
-                                width: 768,
-                            },
-                        }}
-                    >
-                        {post.body}
-                    </Prose>
-                </Container>
-            )}
-        </Layout>
-    )
-}
+        {post.body && (
+            <Container>
+                <Prose
+                    className="prose-lg max-w-screen-md mx-auto py-8 lg:py-16"
+                    parseOptions={{
+                        img: {
+                            sizes: '(min-width: 768px) 768px, 100vw',
+                            width: 768,
+                        },
+                    }}
+                >
+                    {post.body}
+                </Prose>
+            </Container>
+        )}
+    </>
+)
 
 Post.defaultProps = {
     post: {},
-    error: false,
 }
 
 export async function getStaticProps({ params, preview = false, previewData }) {
     const { slug } = params
-    const { navigation } = await getMainNavigation()
+    const globals = await getGlobalFields(previewData)
 
     try {
         const { post } = await getPostBySlug(slug, previewData)
@@ -52,7 +44,7 @@ export async function getStaticProps({ params, preview = false, previewData }) {
             props: {
                 key: post.id,
                 post,
-                navigation,
+                globals,
                 seo: post.seomatic,
                 preview,
             },
@@ -62,7 +54,7 @@ export async function getStaticProps({ params, preview = false, previewData }) {
         return {
             props: {
                 error: true,
-                navigation,
+                globals,
                 preview,
             },
         }

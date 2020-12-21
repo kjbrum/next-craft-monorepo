@@ -1,30 +1,20 @@
-import Error from 'next/error'
-import { getMainNavigation, getPageByUri, getPageUris } from '@/lib/api'
-import { Layout } from '@/components/general'
+import { getGlobalFields, getPageByUri, getPageUris } from '@/lib/api'
 import { SectionHero } from '@/components/sections'
 
-const Page = ({ page, navigation, error, preview }) => {
-    // Error
-    if (error || !page) return <Error statusCode={404} />
-
-    return (
-        <Layout seo={page.seomatic} navigation={navigation} preview={preview}>
-            <SectionHero
-                title={page.title}
-                image={!!page.featuredImage.length && page.featuredImage[0]}
-            />
-        </Layout>
-    )
-}
+const Page = ({ page }) => (
+    <SectionHero
+        title={page.title}
+        image={!!page.featuredImage.length && page.featuredImage[0]}
+    />
+)
 
 Page.defaultProps = {
     page: {},
-    error: false,
 }
 
 export async function getStaticProps({ params, preview = false, previewData }) {
     const uri = params.page.join('/')
-    const { navigation } = await getMainNavigation()
+    const globals = await getGlobalFields(previewData)
 
     try {
         const { page } = await getPageByUri(uri, previewData)
@@ -33,7 +23,7 @@ export async function getStaticProps({ params, preview = false, previewData }) {
             props: {
                 key: page.id,
                 page,
-                navigation,
+                globals,
                 seo: page.seomatic,
                 preview,
             },
@@ -43,7 +33,7 @@ export async function getStaticProps({ params, preview = false, previewData }) {
         return {
             props: {
                 error: true,
-                navigation,
+                globals,
                 preview,
             },
         }

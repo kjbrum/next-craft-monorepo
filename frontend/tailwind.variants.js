@@ -5,8 +5,7 @@ export default {
     },
     headings: {
         DEFAULT: 'font-bold',
-        display1: 'text-display1 leading-none',
-        display2: 'text-display2 leading-none',
+        display: 'text-display leading-none',
         h1: 'text-h1 leading-none',
         h2: 'text-h2 leading-tight',
         h3: 'text-h3 leading-tight',

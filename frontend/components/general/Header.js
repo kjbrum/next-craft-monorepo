@@ -10,25 +10,29 @@ export const Header = ({ navigation }) => (
                 </Link>
             </Box>
 
-            <Box as="nav">
-                <Flex as="ul" className="space-x-4">
-                    {navigation.map(({ id, title, navLink: [navLink] }) => (
-                        <Box key={id} as="li">
-                            <Link
-                                href={
-                                    navLink.typeHandle === 'internalLink'
-                                        ? `/${navLink.internalLink[0].uri}`
-                                        : navLink.externalLink
-                                }
-                                target={navLink.openInNewWindow ? '_blank' : ''}
-                                className="text-white hover:underline focus:underline"
-                            >
-                                {title}
-                            </Link>
-                        </Box>
-                    ))}
-                </Flex>
-            </Box>
+            {navigation && (
+                <Box as="nav">
+                    <Flex as="ul" className="space-x-4">
+                        {navigation.map(({ id, title, navLink: [navLink] }) => (
+                            <Box key={id} as="li">
+                                <Link
+                                    href={
+                                        navLink.typeHandle === 'internalLink'
+                                            ? `/${navLink.internalLink[0].uri}`
+                                            : navLink.externalLink
+                                    }
+                                    target={
+                                        navLink.openInNewWindow ? '_blank' : ''
+                                    }
+                                    className="text-white hover:underline focus:underline"
+                                >
+                                    {title}
+                                </Link>
+                            </Box>
+                        ))}
+                    </Flex>
+                </Box>
+            )}
         </Flex>
     </Box>
 )

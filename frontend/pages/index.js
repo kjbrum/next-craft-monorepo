@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { gql } from 'graphql-request'
-import { fetchAPI, getMainNavigation } from '@/lib/api'
+import { fetchAPI, getGlobalFields } from '@/lib/api'
 import { SEOMATIC_FRAGMENT } from '@/lib/fragments'
 import { Flex, Button } from '@/components/core'
-import { Layout, Container } from '@/components/general'
+import { Container } from '@/components/general'
 import { SectionHero, SectionPostsList } from '@/components/sections'
 
 export const HOME_QUERY = gql`
@@ -39,7 +39,7 @@ export const HOME_QUERY = gql`
     }
 `
 
-const Home = ({ page, posts, hasMore, navigation, preview }) => {
+const Home = ({ page, posts, hasMore }) => {
     const [offset, setOffset] = useState(process.env.POSTS_PER_PAGE)
     const [allPosts, setAllPosts] = useState(posts)
     const [isFetching, setIsFetching] = useState(false)
@@ -67,7 +67,7 @@ const Home = ({ page, posts, hasMore, navigation, preview }) => {
     }
 
     return (
-        <Layout seo={page.seomatic} navigation={navigation} preview={preview}>
+        <>
             <SectionHero
                 title="Next + Craft Monorepo"
                 image={page?.featuredImage[0]}
@@ -90,12 +90,12 @@ const Home = ({ page, posts, hasMore, navigation, preview }) => {
                     </Flex>
                 )}
             </Container>
-        </Layout>
+        </>
     )
 }
 
 export async function getStaticProps({ preview = false, previewData }) {
-    const { navigation } = await getMainNavigation()
+    const globals = await getGlobalFields(previewData)
     const { page, posts, totalPosts } = await fetchAPI(HOME_QUERY, {
         previewData,
     })
@@ -105,8 +105,8 @@ export async function getStaticProps({ preview = false, previewData }) {
             page,
             posts,
             hasMore: process.env.POSTS_PER_PAGE < totalPosts,
-            navigation,
-            seo: page.seomatic,
+            globals,
+            // seo: page.seomatic,
             preview,
         },
         revalidate: 1,

@@ -26,6 +26,7 @@ return [
         'resourceBasePath' => dirname(__DIR__) . '/web/cpresources',    # Set the resources base path (fixes cli issue)
         'aliases' => [    // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
             '@previewProduction' => App::env('PRIMARY_SITE_URL') . '/api/preview?uri={uri}',
+            '@previewStaging' => App::env('STAGING_SITE_URL') . '/api/preview?uri={uri}',
             '@previewLocal' => 'http://localhost:3000/api/preview?uri={uri}',
             '@uploadsBasePath' => getenv('UPLOADS_BASE_PATH'),
             '@uploadsBaseUrl' => getenv('UPLOADS_BASE_URL'),

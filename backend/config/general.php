@@ -33,7 +33,7 @@ return [
         ],
         'devMode' => false,    // Disable devMode
         'allowUpdates' => false,    // Disallow running updates
-        'allowAdminChanges' => true,    // Disallow admin changes
+        'allowAdminChanges' => false,    // Disallow admin changes
         'backupOnUpdate' => true,    // Enable running backups when updating
         'disallowRobots' => true,    // Prevent crawlers from indexing pages and following links
         'headlessMode' => true,    // Enable headless mode

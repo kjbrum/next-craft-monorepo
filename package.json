@@ -1,0 +1,10 @@
+{
+  "name": "sf-next-craft-mono",
+  "private": true,
+  "description": "Simple Focus Next.js and Craft starter.",
+  "author": "Simple Focus <dev@simplefocus.com>",
+  "scripts": {
+    "backend": "cd backend &&",
+    "frontend": "cd frontend &&"
+  }
+}

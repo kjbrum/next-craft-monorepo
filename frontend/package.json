@@ -1,8 +1,8 @@
 {
-  "name": "sf-next-starter",
+  "name": "sf-next-craft-mono",
   "private": true,
   "version": "0.1.0",
-  "description": "Simple Focus Next.js starter.",
+  "description": "Simple Focus Next.js and Craft starter.",
   "author": "Simple Focus <dev@simplefocus.com>",
   "scripts": {
     "dev": "next dev",

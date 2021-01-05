@@ -1,4 +1,4 @@
-# SF Starter Monorepo
+# SF Next.js/Craft Starter Monorepo
 
 `backend` - Craft install for the CMS
 

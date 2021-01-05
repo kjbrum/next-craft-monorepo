@@ -1,8 +1,10 @@
+import { withStore } from '@/lib/store'
 import { getGlobalFields, getPostBySlug, getPostSlugs } from '@/lib/api'
+import { Box, Text } from '@/components/core'
 import { Container, Prose } from '@/components/general'
 import { SectionHero } from '@/components/sections'
 
-const Post = ({ post }) => (
+const Post = ({ store, post }) => (
     <>
         <SectionHero
             title={post.title}
@@ -14,7 +16,7 @@ const Post = ({ post }) => (
         {post.body && (
             <Container>
                 <Prose
-                    className="prose-lg max-w-screen-md mx-auto py-8 lg:py-16"
+                    className="prose-lg max-w-screen-md mx-auto pt-8 lg:pt-16"
                     parseOptions={{
                         img: {
                             sizes: '(min-width: 768px) 768px, 100vw',
@@ -24,6 +26,24 @@ const Post = ({ post }) => (
                 >
                     {post.body}
                 </Prose>
+
+                <Box className="max-w-screen-md mx-auto pt-6 pb-8 lg:pb-16">
+                    <Text>
+                        <button
+                            className="uppercase text-sm font-bold"
+                            onClick={() =>
+                                store.dispatch({
+                                    type: 'TOGGLE_SAVED',
+                                    value: post.id,
+                                })
+                            }
+                        >
+                            {store.state.saved.includes(post.id)
+                                ? '✅ Saved'
+                                : '💾 Save'}
+                        </button>
+                    </Text>
+                </Box>
             </Container>
         )}
     </>
@@ -74,4 +94,4 @@ export async function getStaticPaths() {
     }
 }
 
-export default Post
+export default withStore(Post)

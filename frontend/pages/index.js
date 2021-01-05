@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { gql } from 'graphql-request'
+import { withStore } from '@/lib/store'
 import { fetchAPI, getGlobalFields } from '@/lib/api'
 import { SEOMATIC_FRAGMENT } from '@/lib/fragments'
 import { Flex, Grid, Button } from '@/components/core'
@@ -40,11 +41,13 @@ export const HOME_QUERY = gql`
     }
 `
 
-const Home = ({ page, posts, hasMore }) => {
+const Home = ({ store, page, posts, hasMore }) => {
     const [offset, setOffset] = useState(process.env.POSTS_PER_PAGE)
     const [allPosts, setAllPosts] = useState(posts)
     const [isFetching, setIsFetching] = useState(false)
     const [hasMorePosts, setHasMorePosts] = useState(hasMore)
+
+    console.log(store)
 
     const fetchMorePosts = async () => {
         if (!isFetching) {
@@ -83,6 +86,7 @@ const Home = ({ page, posts, hasMore }) => {
                                 url={`/posts/${post.slug}`}
                                 title={post.title}
                                 image={post.featuredImage[0]}
+                                saved={store.state.saved.includes(post.id)}
                             />
                         ))}
                     </Grid>
@@ -118,11 +122,11 @@ export async function getStaticProps({ preview = false, previewData }) {
             posts,
             hasMore: process.env.POSTS_PER_PAGE < totalPosts,
             globals,
-            // seo: page.seomatic,
+            seo: page.seomatic,
             preview,
         },
         revalidate: 1,
     }
 }
 
-export default Home
+export default withStore(Home)

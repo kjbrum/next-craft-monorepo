@@ -1,6 +1,6 @@
-import { Box, Link, Heading, Image } from '@/components/core'
+import { Box, Link, Heading, Text, Image } from '@/components/core'
 
-export const CardPost = ({ url, title, excerpt, image }) => (
+export const CardPost = ({ url, title, image, saved }) => (
     <Box
         as="article"
         className="bg-white shadow-md translate-y-0 transform hover:-translate-y-0.5 hover:shadow-lg focus-within:-translate-y-0.5 focus-within:shadow-lg transition"
@@ -27,6 +27,11 @@ export const CardPost = ({ url, title, excerpt, image }) => (
                 >
                     {title}
                 </Heading>
+                {saved && (
+                    <Text className="pt-2 uppercase text-sm font-bold">
+                        ✅ Saved
+                    </Text>
+                )}
             </Box>
         </Link>
     </Box>

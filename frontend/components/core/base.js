@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { default as NextLink } from 'next/link'
 import { default as NextImage } from 'next/image'
-import classNames from 'classnames'
+import cx from 'classnames'
 import { parseVideoUrl } from '@/lib/helpers'
 import twVariants from '@/tailwind.variants'
 import { getMargin, omitMargin } from '@/lib/helpers'
@@ -19,7 +19,7 @@ export const Box = forwardRef(
     ) => (
         <Tag
             ref={ref}
-            className={classNames([
+            className={cx([
                 __variantKey &&
                     variant && [
                         twVariants?.[__variantKey]?.['DEFAULT'],
@@ -33,14 +33,14 @@ export const Box = forwardRef(
 )
 
 export const Flex = forwardRef(({ className, ...props }, ref) => (
-    <Box ref={ref} className={classNames('flex', className)} {...props} />
+    <Box ref={ref} className={cx('flex', className)} {...props} />
 ))
 
 export const Grid = forwardRef(({ className, ...props }, ref) => (
     <Box
         ref={ref}
         __variantKey="grids"
-        className={classNames('grid', className)}
+        className={cx('grid', className)}
         {...props}
     />
 ))
@@ -136,7 +136,7 @@ export const AspectRatio = forwardRef(
         return (
             <Box
                 ref={ref}
-                className={classNames(
+                className={cx(
                     `aspect-w-${width} aspect-h-${height}`,
                     className
                 )}
@@ -152,7 +152,7 @@ export const AspectImage = forwardRef(
             <Image
                 ref={ref}
                 ratio={ratio}
-                className={classNames(
+                className={cx(
                     'w-full h-full object-cover',
                     omitMargin(className)
                 )}

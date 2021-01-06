@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import classNames from 'classnames'
+import cx from 'classnames'
 import { getGlobalFields } from '@/lib/api'
 
 import { Container } from '@/components/general'
@@ -34,7 +34,7 @@ const SectionHeading = ({ title, ...props }) => (
 )
 
 const Card = ({ className, children, ...props }) => (
-    <Box {...props} className={classNames('p-8', className)}>
+    <Box {...props} className={cx('p-8', className)}>
         {children}
     </Box>
 )

@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import cx from 'classnames'
 import { Box, Flex, Link, Text, Heading, Image } from '@/components/core'
 import { Container } from '@/components/general'
 

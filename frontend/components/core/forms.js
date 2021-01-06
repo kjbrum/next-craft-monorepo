@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import classNames from 'classnames'
+import cx from 'classnames'
 import { Box } from '@/components/core'
 import { getMargin, omitMargin } from '@/lib/helpers'
 
@@ -18,7 +18,7 @@ export const Input = forwardRef(({ className, ...props }, ref) => (
         as="input"
         type="text"
         // __variantKey="forms.input"
-        className={classNames('rounded focus:border-gray-500', className)}
+        className={cx('rounded focus:border-gray-500', className)}
         {...props}
     />
 ))
@@ -28,7 +28,7 @@ export const Textarea = forwardRef(({ className, ...props }, ref) => (
         ref={ref}
         as="textarea"
         // __variantKey="forms.textarea"
-        className={classNames('rounded focus:border-gray-500', className)}
+        className={cx('rounded focus:border-gray-500', className)}
         {...props}
     />
 ))
@@ -38,7 +38,7 @@ export const Select = forwardRef(({ className, ...props }, ref) => (
         ref={ref}
         as="select"
         // __variantKey="forms.select"
-        className={classNames('rounded focus:border-gray-500', className)}
+        className={cx('rounded focus:border-gray-500', className)}
         {...props}
     />
 ))
@@ -48,17 +48,14 @@ export const Radio = forwardRef(
         <>
             {label ? (
                 <Label
-                    className={classNames(
-                        'inline-flex items-center',
-                        labelClassName
-                    )}
+                    className={cx('inline-flex items-center', labelClassName)}
                 >
                     <Box
                         ref={ref}
                         as="input"
                         type="radio"
                         // __variantKey="forms.radio"
-                        className={classNames(
+                        className={cx(
                             'text-gray-700 focus:ring-offset-0',
                             className
                         )}
@@ -74,7 +71,7 @@ export const Radio = forwardRef(
                     as="input"
                     type="radio"
                     // __variantKey="forms.radio"
-                    className={classNames(
+                    className={cx(
                         'text-gray-700 focus:ring-offset-0',
                         className
                     )}
@@ -90,17 +87,14 @@ export const Checkbox = forwardRef(
         <>
             {label ? (
                 <Label
-                    className={classNames(
-                        'inline-flex items-center',
-                        labelClassName
-                    )}
+                    className={cx('inline-flex items-center', labelClassName)}
                 >
                     <Box
                         ref={ref}
                         as="input"
                         type="checkbox"
                         // __variantKey="forms.checkbox"
-                        className={classNames(
+                        className={cx(
                             'text-gray-700 rounded focus:ring-offset-0',
                             className
                         )}
@@ -116,7 +110,7 @@ export const Checkbox = forwardRef(
                     as="input"
                     type="checkbox"
                     // __variantKey="forms.checkbox"
-                    className={classNames(
+                    className={cx(
                         'text-gray-700 focus:ring-offset-0',
                         className
                     )}
@@ -143,10 +137,7 @@ export const Switch = forwardRef(
         <>
             {onLabel || offLabel ? (
                 <Label
-                    className={classNames(
-                        'inline-flex items-center',
-                        labelClassName
-                    )}
+                    className={cx('inline-flex items-center', labelClassName)}
                 >
                     {offLabel && (
                         <Box as="span" className="pr-2">
@@ -164,7 +155,7 @@ export const Switch = forwardRef(
                         role="checkbox"
                         aria-checked={checked}
                         aria-label="Toggle switch"
-                        className={classNames(
+                        className={cx(
                             'appearance-none w-12 h-6 m-0 p-0 bg-current rounded-full transition-colors',
                             checked ? 'text-gray-700' : 'text-gray-300',
                             getMargin(className)
@@ -173,7 +164,7 @@ export const Switch = forwardRef(
                     >
                         <Box
                             aria-hidden={true}
-                            className={classNames(
+                            className={cx(
                                 'w-6 h-6 rounded-full border-2 border-current bg-white transform transition-transform',
                                 checked ? 'translate-x-full' : 'translate-x-0',
                                 omitMargin(className)
@@ -198,7 +189,7 @@ export const Switch = forwardRef(
                     role="checkbox"
                     aria-checked={checked}
                     aria-label="Toggle switch"
-                    className={classNames(
+                    className={cx(
                         'appearance-none w-12 h-6 m-0 p-0 bg-current rounded-full transition-colors',
                         checked ? 'text-gray-700' : 'text-gray-500',
                         getMargin(className)
@@ -207,7 +198,7 @@ export const Switch = forwardRef(
                 >
                     <Box
                         aria-hidden={true}
-                        className={classNames(
+                        className={cx(
                             'w-6 h-6 rounded-full border-2 border-current bg-white transform transition-transform',
                             checked ? 'translate-x-full' : 'translate-x-0',
                             omitMargin(className)

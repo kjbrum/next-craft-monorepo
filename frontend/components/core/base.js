@@ -55,10 +55,13 @@ export const Heading = forwardRef((props, ref) => (
 
 export const Link = forwardRef(
     ({ href, as, prefetch, replace, scroll, shallow, ...props }, ref) => {
-        href = href.replace(
-            `${process.env.NEXT_PUBLIC_CRAFT_PRIMARY_SITE_URL}`,
-            ''
-        )
+        href =
+            href === process.env.NEXT_PUBLIC_CRAFT_PRIMARY_SITE_URL
+                ? '/'
+                : href.replace(
+                      `${process.env.NEXT_PUBLIC_CRAFT_PRIMARY_SITE_URL}`
+                  )
+
         return href &&
             (href.startsWith('http') || href.startsWith('/uploads')) ? (
             <Box
@@ -94,7 +97,7 @@ export const Button = forwardRef((props, ref) => (
         ref={ref}
         as="button"
         __variantKey="buttons"
-        type="button"
+        type={props?.as && props.as !== 'button' ? null : 'button'}
         {...props}
     />
 ))

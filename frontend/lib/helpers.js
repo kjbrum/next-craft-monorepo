@@ -188,3 +188,20 @@ export const toKebabCase = (str = '') => {
         .map(x => x.toLowerCase())
         .join('-')
 }
+
+// Truncate a string, without cutting off words
+export const truncate = (str, max = 100, more = '...') => {
+    if (str.length > max) {
+        let trimmedString = str.substr(0, max)
+
+        // Re-trim to avoid word cutoff
+        trimmedString = trimmedString.substr(
+            0,
+            Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))
+        )
+
+        return `${trimmedString}${more}`
+    }
+
+    return str
+}

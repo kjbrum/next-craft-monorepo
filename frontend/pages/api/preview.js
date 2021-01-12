@@ -1,4 +1,4 @@
-import { getEntryByUri } from '@/lib/api'
+import { getEntryPreviewByUri } from '@/lib/api'
 
 export default async (req, res) => {
     const uri = req.query.uri
@@ -17,14 +17,14 @@ export default async (req, res) => {
     }
 
     // Fetch the headless CMS to check if the provided `uri` exists
-    // getEntryByUri would implement the required fetching logic to the headless CMS
-    const { entry } = await getEntryByUri(uri)
+    // getEntryPreviewByUri would implement the required fetching logic to the headless CMS
+    const { entry } = await getEntryPreviewByUri(uri)
 
     // If the uri doesn't exist prevent preview mode from being enabled
     if (!entry) {
         return res
             .status(401)
-            .json({ message: `No entry with the uri ${uri}"` })
+            .json({ message: `No entry with the uri "${uri}"` })
     }
 
     // Check if preview mode is needed (draft)

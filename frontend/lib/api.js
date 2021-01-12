@@ -158,11 +158,11 @@ export async function getPostSlugs() {
     return data
 }
 
-export async function getEntryByUri(uri) {
+export async function getEntryPreviewByUri(uri) {
     const data = await fetchAPI(
         gql`
             query($uri: [String]) {
-                entry(uri: $uri) {
+                entry(uri: $uri, status: null) {
                     uri
                 }
             }

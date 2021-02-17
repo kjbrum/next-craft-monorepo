@@ -38,7 +38,7 @@ export default async (req, res) => {
             previewToken: craftPreviewToken,
         },
         {
-            maxAge: 60 * 30, // The preview mode cookies expire in 30 minutes
+            maxAge: 60 * 5, // The preview mode cookies expire in 5 minutes
         }
     )
 

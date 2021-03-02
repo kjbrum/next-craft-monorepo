@@ -15,7 +15,7 @@ const initialState = {
 // Persisted state values from localStorage
 const persistedState =
     typeof window !== 'undefined' &&
-    JSON.parse(window.localStorage['persistedState'])
+    JSON.parse(window.localStorage['persistedState'] || '{}')
 
 // Store reducer
 const reducer = (state, action) => {

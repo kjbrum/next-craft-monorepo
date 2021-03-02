@@ -3,6 +3,7 @@
   "private": true,
   "description": "Simple Focus Next.js and Craft starter.",
   "author": "Simple Focus <dev@simplefocus.com>",
+  "repository": "git@github.com:simplefocus/sf-next-craft-mono.git",
   "scripts": {
     "backend": "cd backend &&",
     "frontend": "cd frontend &&"

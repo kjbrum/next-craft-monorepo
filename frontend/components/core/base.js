@@ -63,7 +63,10 @@ export const Link = forwardRef(
                   )
 
         return href &&
-            (href.startsWith('http') || href.startsWith('/uploads')) ? (
+            (href.startsWith('http') ||
+                href.startsWith('/uploads') ||
+                href.startsWith('mailto:') ||
+                href.startsWith('tel:')) ? (
             <Box
                 ref={ref}
                 as="a"

@@ -26,7 +26,7 @@ const nextConfig = {
     },
     webpack(config, { isServer }) {
         config.resolve.alias['@'] = path.resolve(__dirname)
-        
+
         config.module.rules.push({
             test: /\.svg$/,
             issuer: {

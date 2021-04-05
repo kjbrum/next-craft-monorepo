@@ -205,3 +205,18 @@ export const truncate = (str, max = 100, more = '...') => {
 
     return str
 }
+
+
+// Throttle a function
+export const throttle = (func, delay) => {
+    let inProgress = false
+    return (...args) => {
+        if (inProgress) return
+        inProgress = true
+
+        setTimeout(() => {
+            func(...args)
+            inProgress = false
+        }, delay)
+    }
+}

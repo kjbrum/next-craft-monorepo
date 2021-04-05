@@ -35,9 +35,9 @@ export const parseUploadUrls = text => {
         `${process.env.NEXT_PUBLIC_CRAFT_PRIMARY_SITE_URL}/uploads`,
         'gi'
     )
-    return (
-        text &&
-        text.replace(regex, `${process.env.NEXT_PUBLIC_CRAFT_DOMAIN}/uploads`)
+    return text.replace(
+        regex,
+        `${process.env.NEXT_PUBLIC_CRAFT_DOMAIN}/uploads`
     )
 }
 
@@ -191,21 +191,18 @@ export const toKebabCase = (str = '') => {
 
 // Truncate a string, without cutting off words
 export const truncate = (str, max = 100, more = '...') => {
-    if (str.length > max) {
-        let trimmedString = str.substr(0, max)
+    if (str.length <= max) return str
 
-        // Re-trim to avoid word cutoff
-        trimmedString = trimmedString.substr(
-            0,
-            Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))
-        )
+    let trimmedString = str.substr(0, max)
 
-        return `${trimmedString}${more}`
-    }
+    // Re-trim to avoid word cutoff
+    trimmedString = trimmedString.substr(
+        0,
+        Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))
+    )
 
-    return str
+    return `${trimmedString}${more}`
 }
-
 
 // Throttle a function
 export const throttle = (func, delay) => {

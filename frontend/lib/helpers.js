@@ -204,7 +204,12 @@ export const truncate = (str, max = 100, more = '...') => {
     return `${trimmedString}${more}`
 }
 
-// Throttle a function
+/**
+ * Throttle a function for a set number of milliseconds
+ * @param {function} func Function that will be throttled
+ * @param {integer} delay Number of milliseconds to throttle running the function
+ * @returns {void}
+ */
 export const throttle = (func, delay) => {
     let inProgress = false
     return (...args) => {
@@ -216,4 +221,34 @@ export const throttle = (func, delay) => {
             inProgress = false
         }, delay)
     }
+}
+
+/**
+ * Group an array of objects by a specified key
+ * @param {array} items Array of objects
+ * @param {string} key Key to use for grouping
+ * @returns {object}
+ */
+export const groupByKey = (items, key) => {
+    return items.reduce(
+        (result, item) => ({
+            ...result,
+            [item[key]]: [...(result[item[key]] || []), item],
+        }),
+        {}
+    )
+}
+
+/**
+ * Sort an object alphabetically by keys
+ * @param {object} items Object to be sorted
+ * @returns {object}
+ */
+export const sortByKeys = items => {
+    return Object.keys(items)
+        .sort()
+        .reduce((obj, key) => {
+            obj[key] = items[key]
+            return obj
+        }, {})
 }

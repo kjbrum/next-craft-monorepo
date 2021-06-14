@@ -181,12 +181,22 @@ export const parseVideoUrl = {
 
 // Convert a string to kebabcase
 export const toKebabCase = (str = '') => {
-    return str
-        .match(
-            /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
-        )
-        .map(x => x.toLowerCase())
-        .join('-')
+    if (!str) return ''
+
+    return (
+        str
+            .replace(/\'/g, '')
+            .match(
+                /[A-Z]{2,}(?=[A-Z][a-z0-9]*|\b)|[A-Z]?[a-z0-9]*|[A-Z]|[0-9]+/g
+            )
+            // Old
+            // .match(
+            //     /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+            // )
+            .filter(Boolean)
+            .map(x => x.toLowerCase())
+            .join('-')
+    )
 }
 
 // Truncate a string, without cutting off words
